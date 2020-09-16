@@ -70,6 +70,11 @@ def create_app(defer_init_app=False, freezer_kwargs=None):
     def add_something(product_id):
         return 'This view should be ignored as it does not accept GET.'
 
+    @app.route('/multiple_route_a/')
+    @app.route('/multiple_route_b/')
+    def multiple_routes():
+        return 'Multiple routes to the same content'
+
     @freezer.register_generator
     def product():
         # endpoint, values
